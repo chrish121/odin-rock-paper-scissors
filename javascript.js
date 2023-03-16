@@ -1,9 +1,6 @@
 let playerPoints = 0;
 let computerPoints = 0;
 
-let playerScore = 0;
-let computerScore = 0;
-
 for (let i = 0; i < 5; i++) {
 
 let playerChoice = prompt("Rock, Paper, or Scissors?");
@@ -53,22 +50,20 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     if (playRound(playerSelection, computerSelection) == ("You Win! " + playerSelection + " beats " + computerSelection + ".")) {
         let newPlayerPoints = (playerPoints += 1);
-        return (result = (playRound(playerSelection, computerSelection) + " You get one point." + "\n" + "Player: " + newPlayerPoints + " " + "Computer: " + computerPoints));
+        return (playRound(playerSelection, computerSelection) + " You get one point." + "\n" + "Player: " + newPlayerPoints + " " + "Computer: " + computerPoints);
     }
     else if (playRound(playerSelection, computerSelection) == ("You Lose! " + computerSelection + " beats " + playerSelection + ".")) {
         let newComputerPoints = (computerPoints += 1);
-        return (result = (playRound(playerSelection, computerSelection) + " Your opponent gets one point." + "\n" + "Player: " + playerPoints + " " + "Computer: " + newComputerPoints));
+        return (playRound(playerSelection, computerSelection) + " Your opponent gets one point." + "\n" + "Player: " + playerPoints + " " + "Computer: " + newComputerPoints);
     }
     else {
-        return (result = (playRound(playerSelection, computerSelection) + " No points." + "\n" + "Player: " + playerPoints + " " + "Computer: " + computerPoints));
+        return (playRound(playerSelection, computerSelection) + " No points." + "\n" + "Player: " + playerPoints + " " + "Computer: " + computerPoints);
     }
 }
 
 console.log(game());
 
 }
-
-let tally = result;
 
 function score() {
     if (playerPoints > computerPoints) {
