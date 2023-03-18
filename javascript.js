@@ -4,6 +4,10 @@ let computerPoints = 0;
 for (let i = 0; i < 5; i++) {
 
 let playerChoice = prompt("Rock, Paper, or Scissors?");
+if (playerChoice === null) {
+    console.log("Invalid");
+    break;
+}
 
 function getComputerChoice() {
     let choices = ["rock", "paper", "scissors"];
@@ -76,7 +80,7 @@ function score() {
         return("The tournament is a tie!");
     }
     else {
-        return("Invalid. There is no tournament winner.")
+        return("There is no tournament winner.")
     }
 }
 
