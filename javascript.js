@@ -21,14 +21,28 @@ buttons.forEach((button) => {
     button.addEventListener("click", playRound)
     });
 
+const results = document.querySelector("#results");
+const divStyle = document.querySelector("div").style;
+divStyle.border = "2px solid black";
+divStyle.margin = "15px";
+divStyle.padding = "10px";
+
+const points = document.createElement("div");
+points.classList.add("content");
+points.setAttribute("style", "white-space: pre-wrap")
+
+const finalResult = document.createElement("div");
+finalResult.classList.add("content");
+
+results.appendChild(points);
+results.appendChild(finalResult);
+
 
 function playRound() {
     var playerSelection = this.id;
     var computerSelection = getComputerChoice();
 
     if ((playerPoints != 5) && (computerPoints != 5)) {
-        console.log("P: " + playerSelection);
-        console.log("C: " + computerSelection);
         function playGame(playerSelection, computerSelection) {
             if ((playerSelection == "Rock" && computerSelection == "Scissors") || 
             (playerSelection == "Scissors" && computerSelection == "Paper") ||
@@ -65,59 +79,23 @@ function playRound() {
             }
         }
 
-        console.log(game());
+        points.textContent = `P: ${playerSelection} \nC: ${computerSelection} \n${(game())}`;
 
         if ((playerPoints == 5) || (computerPoints == 5)) {
             if (playerPoints > computerPoints) {
-                console.log("You win the tournament!");
+                finalResult.textContent = ("You win the tournament!");
             }
             else if (computerPoints > playerPoints) {
-                console.log("You lose the tournament.");
+                finalResult.textContent = ("You lose the tournament.");
             }
             else if (computerPoints = playerPoints) {
-                console.log("The tournament is a tie!");
+                finalResult.textContent = ("The tournament is a tie!");
             }
             else {
-                console.log("There is no tournament winner.")
+                finalResult.textContent = ("There is no tournament winner.")
             }
         }
     } else {
         return;
     }
 }
-
-
-/* function game() {
-    var playerSelection = this.id;
-
-    if (playRound(playerSelection, computerSelection) == ("You Win! " + playerSelection + " beats " + computerSelection + ".")) {
-        let newPlayerPoints = (playerPoints += 1);
-        return (playRound(playerSelection, computerSelection) + " You get one point." + "\n" + "Player: " + newPlayerPoints + " " + "Computer: " + computerPoints);
-    }
-    else if (playRound(playerSelection, computerSelection) == ("You Lose! " + computerSelection + " beats " + playerSelection + ".")) {
-        let newComputerPoints = (computerPoints += 1);
-        return (playRound(playerSelection, computerSelection) + " Your opponent gets one point." + "\n" + "Player: " + playerPoints + " " + "Computer: " + newComputerPoints);
-    }
-    else {
-        return (playRound(playerSelection, computerSelection) + " No points." + "\n" + "Player: " + playerPoints + " " + "Computer: " + computerPoints);
-    }
-}
-
-
-function score() {
-
-    if (playerPoints > computerPoints) {
-        return (game() + "\nYou win the tournament!");
-    }
-    else if (computerPoints > playerPoints) {
-        return(game() + "\nYou lose the tournament.");
-    }
-    else if (computerPoints = playerPoints) {
-        return(game() + "\nThe tournament is a tie!");
-    }
-    else {
-        return(game() + "\nThere is no tournament winner.")
-    }
-}
-
-console.log(score()); */
