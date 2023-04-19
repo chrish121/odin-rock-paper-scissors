@@ -1,14 +1,6 @@
 let playerPoints = 0;
 let computerPoints = 0;
 
-/* for (let i = 0; i < 5; i++) {
-
-let playerChoice = prompt("Rock, Paper, or Scissors?");
-if (playerChoice === null) {
-    console.log("Invalid");
-    break;
-} */
-
 function getComputerChoice() {
     let choices = ["Rock", "Paper", "Scissors"];
     let randomChoice = choices[(Math.floor(Math.random() * (choices.length)))];
